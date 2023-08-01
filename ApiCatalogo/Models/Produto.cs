@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace ApiCatalogo.Models;
     [Table("Produtos")]
@@ -21,5 +22,6 @@ namespace ApiCatalogo.Models;
     public string? ImagemUrl { get; set; }
     public float Estoque { get; set; }
     public DateTime DataCadastro { get; set; }
+    [JsonIgnore]
     public Categoria? Categoria { get; set; }
 }

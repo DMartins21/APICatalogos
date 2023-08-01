@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MVuA0DpX2tNs9xZFaW/0njxi91uJzsa+lw6z02yaD8kqC93iYEJsjEWpHH3PU4RuKO8PiWaN6wKRUkCN9FIZCA==",
+  "dgSpecHash": "h4m8GUKp3jYMm76smxp0kRxmf/CAeAHC/S3lnbE6YM2Agdzugbi4gNO0ljRl5/qbDHmnIUC+9YH0svbYq+HUNQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\davi_\\source\\repos\\ApiCatalogo\\ApiCatalogo\\ApiCatalogo.csproj",
+  "projectFilePath": "C:\\Repositorio\\APICatalogos\\ApiCatalogo\\ApiCatalogo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\davi_\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\davi_\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
