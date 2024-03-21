@@ -1,0 +1,12 @@
+﻿ReferenceHandler: Define como o JsonSerializer lida com referências sobre a serialização e desserialização.
+
+IgnoreCycles: Ignora o objeto quando um ciclo de referência é detectado durante a serialização.
+
+
+Ignorando propriedades:
+1 - ignorando propriedades individuais:
+[JsonIgnore]: Sempre ignora a propriedade(padrão).
+[JsonIgnore(Condition = JsonIgonreCondition.Never)]: Sempre serializa e desserializa.
+
+2 - Ignorando todas as propriedades(Program):
+builder.Services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.<condição>).

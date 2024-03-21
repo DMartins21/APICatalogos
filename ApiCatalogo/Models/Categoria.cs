@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ApiCatalogo.Models;
 [Table("Categorias")]
-    public class Categoria
-    {
+public class Categoria
+{
     [Key]
     public int Id { get; set; }
     [Required]

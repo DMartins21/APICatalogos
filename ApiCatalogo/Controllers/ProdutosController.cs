@@ -8,12 +8,12 @@ namespace ApiCatalogo.Controllers
     [Route("[controller]")]
     [ApiController]
 
-    public class ProdutossController : ControllerBase
+    public class ProdutosController : ControllerBase
     {
 
         private readonly AppDbContext _context;
 
-        public ProdutossController(AppDbContext context)
+        public ProdutosController(AppDbContext context)
         {
             _context = context;
         }

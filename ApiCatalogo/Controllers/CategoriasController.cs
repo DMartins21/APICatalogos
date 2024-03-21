@@ -5,51 +5,67 @@ using Microsoft.EntityFrameworkCore;
 
 
 namespace ApiCatalogo.Controllers;
-    [Route("[controller]")]
-    [ApiController]
+
+[Route("[controller]")]
+[ApiController]
 public class CategoriasController : ControllerBase
 {
 
-        private readonly AppDbContext _context;
-        
-        public CategoriasController(AppDbContext context)
-        {
-            _context = context;
-        }
+    private readonly AppDbContext _context;
 
-        [HttpGet("produtos")]
-        public ActionResult<IEnumerable<Categoria>> GetCategoriasProdutos()
-        {
-        return _context.Categorias.Include(p => p.Produtos).ToList();
-        }
+    public CategoriasController(AppDbContext context)
+    {
+        _context = context;
+    }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<Categoria>> Get()
+    [HttpGet("Produtos")]
+    public ActionResult<IEnumerable<Categoria>> GetCategoriasProdutos()
+    {
+        try
         {
-             return _context.Categorias.AsNoTracking().ToList();
+            return _context.Categorias.AsNoTracking().Include(p => p.Produtos).ToList();
         }
+        catch(Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um problema ao tratar sua solicitação");
+        }
+    }
 
-        [HttpGet("{id:int}", Name = "Obter Categoria")]
-        public ActionResult<Categoria> Get(int id)
+    [HttpGet]
+    public ActionResult<IEnumerable<Categoria>> Get()
+    {
+        return _context.Categorias.AsNoTracking().ToList();
+    }
+
+    [HttpGet("{id:int}", Name = "Obter Categoria")]
+    public ActionResult<Categoria> Get(int id)
+    {
+        try
         {
             var categoria = _context.Categorias.FirstOrDefault();
-            if(categoria == null)
+            if (categoria == null)
             {
                 return NotFound($"Não existe a categoria {categoria}");
             }
             return Ok(categoria);
         }
-        [HttpPost]
-        public ActionResult<Categoria> Post(Categoria categoria)
+        catch (Exception)
         {
-            if(categoria == null)
-            {
-            return BadRequest();
-            }
-         _context.Categorias.Add(categoria);
-         _context.SaveChanges();
-         return new CreatedAtRouteResult("ObterCategoria", new { id = categoria.Id }, categoria);
+            return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um problema ao tratar sua solicitação");
         }
+
+    }
+    [HttpPost]
+    public ActionResult<Categoria> Post(Categoria categoria)
+    {
+        if (categoria == null)
+        {
+            return BadRequest();
+        }
+        _context.Categorias.Add(categoria);
+        _context.SaveChanges();
+        return new CreatedAtRouteResult("ObterCategoria", new { id = categoria.Id }, categoria);
+    }
     [HttpPut("{id:int}")]
     public ActionResult Put(int id, Categoria categoria)
     {
@@ -67,7 +83,7 @@ public class CategoriasController : ControllerBase
         var categoria = _context.Categorias.Find(id);
         if (categoria is null)
         {
-            return NotFound("Produto não localizado");
+            return NotFound($"Categoria:{categoria} não localizado");
         }
         _context.Categorias.Remove(categoria);
         _context.SaveChanges();

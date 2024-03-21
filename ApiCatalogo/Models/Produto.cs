@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace ApiCatalogo.Models;
-    [Table("Produtos")]
-    public class Produto
-    {
+[Table("Produtos")]
+public class Produto
+{
     [Key]
     public int Id { get; set; }
     [Required]

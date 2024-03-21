@@ -1,0 +1,34 @@
+﻿Podemos fazer os construtores da classe com o InteliJ;
+
+Metodos ACTIONS:
+GET:
+Por que usamos IEnumerable?
+1 - Temos uma interface somente leitura;
+2 - trabalharemos por demanda;
+3 - Não precisaremos ter toda a coleção na memória;
+
+Podemos utilizar o metodo IActionResult.
+
+Name: Informa uma rota nomeada de CreatedAtRoutedResult.
+
+Include: Permite carregar entidades relacionadas.
+
+Otimizando o Desempenho:
+AsNoTracking: Retorna uma nova consulta e não armazena as entidades em cache(melhor desempenho), usamos apenas para consultas somente leitura sem a necessidade de alterar os dados.
+
+Nunca retorne todos os registros em uma consulta:
+ex: _context.Produtos.Take(10).ToList();
+
+Nunca retorne objetos relacionados sem aplicar um filtro:
+ex: _context.Categorias.Include(p => p.Produtos).Where(c => c.Categoria.Id <= 5).ToList();
+
+
+POST:
+CreatedAtRouteResult: É uma ActionResult que retorna o status 201, definindo o nome da rota e informa o id e o objeto que foi incluido.
+
+PUT:
+200 - OK
+204 - NoContend
+400 - BadRequest
+
+Entry: Informa ao contexto que a entidade está em um estado modificado.
